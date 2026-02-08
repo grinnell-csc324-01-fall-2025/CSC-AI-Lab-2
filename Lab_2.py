@@ -53,7 +53,7 @@ def itterative_evaluation(S, theta, Gamma):
         k+=1
         ## break condition, no square changed more than a delta of value.    
         if delta < theta:
-            print_iteration(S, "∞")
+            print_iteration(S, f"∞({k})")
             break
 
     return S
@@ -61,12 +61,8 @@ def itterative_evaluation(S, theta, Gamma):
 def print_iteration(S, k):
     print(f"\nV at iteration k = {k}")
     for row in S:
-        print(" ".join(f"{float(v):6.1f}" for v in row))
+        print(" ".join(f"{float(v):6.2f}" for v in row))
 
 # run the evaluation
 theta = 0.0001
 S_final = itterative_evaluation(np.zeros((4,4)), theta, Gamma)
-
-
-
-
