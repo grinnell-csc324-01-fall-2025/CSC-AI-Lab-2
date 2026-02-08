@@ -1,48 +1,10 @@
 import numpy as np
 
-gamma = 1
+Gamma = 1
 R = -1
 
 k = 0
 
-<<<<<<< HEAD
-actions = ["up", "down", "left","right" ]
-
-
-
-def random_policy(x,y, S):
-    moves = []
-    if x>0:
-        np.append(moves, "left")
-    if y>0:
-        np.append(moves, "up")
-    if x< len(S) -1:
-        np.append(moves, "right")
-    if y < len(S[0]) -1:
-        np.append(moves, "down")
-        
-    return moves
-
-def evaluate_cell(S_prev, x, y):
-    moves= random_policy(x,y,S_prev)
-    v = 0
-
-    for a in moves:
-        p = 1/len(moves)
-        if a == 'up':
-            prev_state = S_prev[x,y+1]
-        elif a == 'down':
-            prev_state = S_prev[x,y-1]
-        elif a == 'left':
-            prev_state = S_prev[x-1,y]
-        elif a == 'right':
-            prev_state = S_prev[x+1,y]
-        v += p *(R + (gamma*S_prev)) 
-    return (v)
-
-def itterative_evaluation(S, theta):
-    theta = 0.0001
-=======
 actions = ["u", "d", "l","r" ]
 terminalS = [(0,0), (3,3)]
 
@@ -77,23 +39,14 @@ def itterative_evaluation(S, theta, Gamma):
     S = np.zeros((4, 4))
     print_iteration(S, 0)   
     k=1
->>>>>>> f126d19dec081f6fe1637af84d70e9592208d576
     while True:
         delta = 0.0
         S_prev = S.copy()
 
-<<<<<<< HEAD
-        for x in len(S):
-            for y in len(S[x]): # for each s \in S, indexed by x,y
-                v_new = evaluate_cell(S_prev, x,y) 
-                delta = S_prev[x,y]-v_new
-                S[x,y] = v_new 
-=======
         for x in range(len(S)):
             for y in range(len(S[x])): # for each s \in S, indexed by x,y
                 v_new, d = evaluate_cell(S_prev, x,y) 
                 S[x][y] = v_new 
->>>>>>> f126d19dec081f6fe1637af84d70e9592208d576
                 delta = max(delta, d)
         if k in PRINT_KS:
             print_iteration(S, k)
@@ -102,17 +55,6 @@ def itterative_evaluation(S, theta, Gamma):
         if delta < theta:
             print_iteration(S, "∞")
             break
-<<<<<<< HEAD
-    return
-
-
-S0 = np.zeros((4, 4))
-itterative_evaulation(S0, 
-while 
-
-def plot_itteration():
-    return
-=======
 
     return S
 
@@ -125,6 +67,6 @@ def print_iteration(S, k):
 theta = 0.0001
 S_final = itterative_evaluation(np.zeros((4,4)), theta, Gamma)
 
->>>>>>> f126d19dec081f6fe1637af84d70e9592208d576
+
 
 
